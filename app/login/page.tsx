@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 
 export default function Login(){
     const router = useRouter()
-    const [email, setemail] = useState()
-    const [password, setpassword] = useState()
+    const [email, setemail] = useState("")
+    const [password, setpassword] = useState("")
 
     async function handleLogin(e: React.FormEvent){
         e.preventDefault();
