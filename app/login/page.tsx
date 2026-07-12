@@ -7,14 +7,12 @@ export default function Login(){
     const router = useRouter()
     const [email, setemail] = useState()
     const [password, setpassword] = useState()
-    const [error, seterror] = useState()
 
     async function handleLogin(e: React.FormEvent){
         e.preventDefault();
-        seterror("")
         const {error} = await supabase.auth.signInWithPassword({email, password})
         if(error){
-            seterror(error.message)
+            console.log(error.message)
             console.log("not a valid emai/password")
             return;
         }
