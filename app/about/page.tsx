@@ -2,9 +2,8 @@ import Link from 'next/link';
 
 export default function About(){
     return(
-        <div>
+        <div style={{justifyItems: 'center'}}>
             <p>About WBapp</p>
-            <Link href={'/'}>-Back</Link>
         </div>
     )
 }

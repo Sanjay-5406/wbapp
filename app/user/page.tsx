@@ -1,8 +1,16 @@
-"user client"
+
 import { supabase } from "@/lib/supabase"
 import { notFound } from "next/navigation"
-
 export default async function User(){
+    const {
+    data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+        
+        console.log("Sorry you are not logged-in :(")
+        return
+    }
 
     const {data, error} = await supabase.from("users").select("*");
     const users = data
@@ -12,8 +20,6 @@ export default async function User(){
     else{
         console.log(data)
     }
-
-
 
     return(
         <div>
