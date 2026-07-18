@@ -1,4 +1,4 @@
-export const navStyles = {
+export const navStyles: Record<string, React.CSSProperties> = {
   navbar: {
     position: 'relative',
     width: '100%',

@@ -33,7 +33,7 @@ export default function RootLayout({
     { label: 'View users', href: '/user' },
     { label: 'Login', href: '/login' },
     { label: 'Signup', href: '/signup' },
-  ];
+  ]; 
 
   return (
     <html
