@@ -30,7 +30,7 @@ export default function LoginPage() {
     }
 
     // Redirect to your protected page on success
-    router.push("/dashboard");
+    router.push("/");
     router.refresh();
   };
 
