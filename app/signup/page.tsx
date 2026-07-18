@@ -37,12 +37,12 @@ export default function SignupPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-50">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center mb-6">Create Account</h1>
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md" style={{boxShadow:"0px 0px 12px grey"}}>
+        <h1 className="text-2xl font-bold text-center mb-6" style={{color:"black",fontFamily:"sans-serif"}}>Create Account</h1>
 
         {message && (
           <div
-            className={`p-3 mb-4 text-sm rounded ${
+            className={`p-3 mb-4 rounded ${
               isError ? "text-red-600 bg-red-100" : "text-green-600 bg-green-100"
             }`}
           >
@@ -52,7 +52,7 @@ export default function SignupPage() {
 
         <form onSubmit={handleSignup} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Email Address</label>
+            <label className="block" style={{color:"black",fontFamily:"sans-serif"}}>Email Address</label>
             <input
               type="email"
               required
@@ -63,7 +63,7 @@ export default function SignupPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Password</label>
+            <label className="block font-medium mb-1" style={{color:"black",fontFamily:"sans-serif"}}>Password</label>
             <input
               type="password"
               required

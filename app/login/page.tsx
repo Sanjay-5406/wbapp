@@ -36,8 +36,8 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-50">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center mb-6">Log In</h1>
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md" style={{boxShadow:"0px 0px 12px grey"}}>
+        <h1 className="text-2xl font-bold text-center mb-6" style={{color:"black",fontFamily:"sans-serif"}}>Log In</h1>
         
         {errorMessage && (
           <div className="p-3 mb-4 text-sm text-red-600 bg-red-100 rounded">
@@ -47,7 +47,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Email Address</label>
+            <label className="block" style={{color:"black",fontFamily:"sans-serif"}}>Email Address</label>
             <input
               type="email"
               required
@@ -58,7 +58,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Password</label>
+            <label className="block" style={{color:"black",fontFamily:"sans-serif"}}>Password</label>
             <input
               type="password"
               required
