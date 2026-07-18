@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
+import { navStyles } from "@/mycss/styles"
+import Navbar from "@/app/nav"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,20 +25,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  // Array containing paths and their display labels
+  const navLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Go to About', href: '/about' },
+    { label: 'View users', href: '/user' },
+    { label: 'Login', href: '/login' },
+    { label: 'Signup', href: '/signup' },
+  ];
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Link href={'/'}>Home</Link>
-        <Link href={'/about'}>Go to About</Link>
-        <Link href={'/user'}>View users</Link>
-        <Link href={'/login'}>Login</Link>
-        <Link href={'/signup'}>Signup</Link>
-        <br />
+        <Navbar/>
         {children}
       </body>
     </html>
   );
+
+ 
 }
