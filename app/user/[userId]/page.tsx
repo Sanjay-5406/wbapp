@@ -1,10 +1,11 @@
 "user client"
-import { supabase } from "@/lib/supabase"
+import { createClient } from "@/utils/supabase/client";
 import { notFound } from "next/navigation"
 
 export default async function User({params}:{params: Promise<{userId: string}>}){
     // const supabaseUrl = process.env.NEXT_PUBLIC_SUPABSE_URL
     // const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABSE_ANON_KEY
+    const supabase = createClient()
     const {userId} = await params
     const {data, error} = await supabase.from("users").select("*").eq("userid",userId);
     const users = data

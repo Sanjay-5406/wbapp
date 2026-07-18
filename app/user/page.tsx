@@ -1,15 +1,17 @@
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation"
+// import { createClient } from "@/utils/supabase/server"
 
-import { supabase } from "@/lib/supabase"
-import { notFound } from "next/navigation"
+
 export default async function User(){
+    const supabase = await createClient();
     const {
     data: { user },
     } = await supabase.auth.getUser();
 
     if (!user) {
-        
         console.log("Sorry you are not logged-in :(")
-        return
+        redirect("/login")
     }
 
     const {data, error} = await supabase.from("users").select("*");
