@@ -40,6 +40,7 @@ export default function Navbar() {
   const coreLinks = [
     { label: 'Home', href: '/' },
     { label: 'Products', href: '/products'},
+    { label: 'Cart', href: '/cart'},
     { label: 'View users', href: '/user' },
     { label: 'About us', href: '/about' },
   ];
