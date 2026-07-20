@@ -20,7 +20,7 @@ export default function GetProducts({ products }: { products: {name: string, pri
         console.log(`User bought: ${p.pname}`)
     }
 
-    async function handleBuyProducts(product: {name: string, price: number, productid: number}) {
+    async function handleBuyProducts(product: { name: string; price: string; availableqty: number; productid: number; }) {
         try {
             const res = await fetch("/api/products", {
             method: "POST",
