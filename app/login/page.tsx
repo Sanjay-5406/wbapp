@@ -54,6 +54,7 @@ export default function LoginPage() {
               className="w-full p-2 border rounded"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              style={{color:"black",fontFamily:"sans-serif"}}
             />
           </div>
 
@@ -65,6 +66,7 @@ export default function LoginPage() {
               className="w-full p-2 border rounded"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              style={{color:"black",fontFamily:"sans-serif"}}
             />
           </div>
 

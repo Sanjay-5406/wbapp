@@ -10,10 +10,10 @@ export default async function ProductsPage() {
     .from("product")
     .select("*");
 
+  
   return (
     <>
-        <ProductsClient products={products ?? []} />;
-
+      <ProductsClient products={products ?? []} />;
     </>
   )
 
