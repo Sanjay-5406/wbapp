@@ -6,7 +6,7 @@
 // import { createClient } from '@/utils/supabase/client';
 
 
-export default function GetProducts({ products }){
+export default function GetProducts({ products }: { products: {name: string, price: string, availableqty: number}[] }){
 
     const services = [
         {id:"compute",pname:"Rent Compute",price:299},
