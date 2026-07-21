@@ -16,10 +16,15 @@ export default async function CartPage() {
   const { data: cartItems, error: cartError } = await supabase
     .from('cart')
     .select('productid, product, price, userid') // Joins product details
-    .eq('uuid', user.id);
+    .eq('userid', user.id);
 
   if (cartError) {
-    return <p>Error loading cart items.</p>;
+    console.log(cartError.message)
+    return (
+      <>
+        <p>Error loading cart items.</p>
+      </>
+    );
   }
 
   return (

@@ -41,7 +41,7 @@ export default function Navbar() {
     { label: 'Home', href: '/' },
     { label: 'Products', href: '/products'},
     { label: 'Cart', href: '/cart'},
-    { label: 'View users', href: '/user' },
+    { label: 'Chat', href: '/chat' },
     { label: 'About us', href: '/about' },
   ];
 
