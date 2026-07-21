@@ -1,21 +1,26 @@
 import RealtimeComponent from './getchat'
 import { createClient } from '@/utils/supabase/server'
+import { redirect } from "next/navigation"
 
 export default async function Chat() {
-    const supabase = await createClient()
-    const { data: chat } = await supabase
-        .from('chat')
-        .select('*')
-    console.log(chat)
-
+    const supabase = await createClient();
     const {
         data: { user },
         error,
     } = await supabase.auth.getUser()
-
+    console.log(user)
     if (error) {
-        console.error(error.message)
+        redirect('/login');
+        console.error(error)
     }
+
+
+    const { data: chat } = await supabase
+        .from('chat')
+        .select('*')
+    console.log(chat)
+    
+    const username = {name: user?.email}    
 
     return (
         <>
@@ -27,7 +32,7 @@ export default async function Chat() {
                     </p>
                 </div>
                 <br />
-                <RealtimeComponent />
+                <RealtimeComponent {...username} />;
             </div>
         </>
     )
