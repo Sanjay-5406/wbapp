@@ -20,7 +20,11 @@ export default async function Chat() {
         .select('*')
     console.log(chat)
     
-    const username = {name: user?.email}    
+    interface UserProps {
+        name: string,
+    }
+
+    const username: UserProps = {name: user?.email ?? "Anonymous"}    
 
     return (
         <>

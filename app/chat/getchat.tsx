@@ -35,8 +35,12 @@ function getUsernameColor(username: string) {
   return USER_COLORS[Math.abs(hash) % USER_COLORS.length]
 }
 
-export default function RealtimeComponent({ name }) {
-  let loggeduser = name;
+interface UserProps {
+        name: string,
+}
+
+export default function RealtimeComponent({ name }: UserProps) {
+  const loggeduser = name;
   const supabase = createClient()
 
   const [messages, setMessages] = useState<Message[]>([])
