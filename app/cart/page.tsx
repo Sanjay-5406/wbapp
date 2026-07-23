@@ -1,7 +1,7 @@
 // app/cart/page.tsx
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import CartClient, { CartItem } from "./cartclient";
+import CartClient, { CartItem } from "@/app/cart/cartclient";
 
 export default async function CartPage() {
   const supabase = await createClient();

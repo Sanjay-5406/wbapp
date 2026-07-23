@@ -1,4 +1,4 @@
-import RealtimeComponent from './getchat'
+import RealtimeComponent from '@/app/chat/getchat'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from "next/navigation"
 
