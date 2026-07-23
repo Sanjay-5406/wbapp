@@ -1,5 +1,5 @@
 // app/about/page.tsx
-import AboutClient from "./AboutClient";
+import AboutClient from "@/app/about/AboutClient";
 
 export const metadata = {
   title: "About Us | Cloud Core",
