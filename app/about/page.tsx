@@ -1,9 +1,11 @@
-import Link from 'next/link';
+// app/about/page.tsx
+import AboutClient from "./AboutClient";
 
-export default function About(){
-    return(
-        <div style={{justifyItems: 'center'}}>
-            <p>About WBapp</p>
-        </div>
-    )
+export const metadata = {
+  title: "About Us | Cloud Core",
+  description: "Learn about our platform, hardware architecture, and vision.",
+};
+
+export default function AboutPage() {
+  return <AboutClient />;
 }

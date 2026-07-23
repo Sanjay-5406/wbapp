@@ -1,50 +1,51 @@
-import { createClient } from '@/utils/supabase/server';
-import { redirect } from 'next/navigation';
+// app/cart/page.tsx
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
+import CartClient, { CartItem } from "./cartclient";
 
 export default async function CartPage() {
   const supabase = await createClient();
 
   // 1. Get the logged-in user
-  const { data: { user }, error: userError } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
 
   // 2. Redirect to login if not authenticated
   if (userError || !user) {
-    redirect('/login');
+    redirect("/login");
   }
 
   // 3. Fetch cart items belonging to this user
-  const { data: cartItems, error: cartError } = await supabase
-    .from('cart')
-    .select('productid, product, price, userid') // Joins product details
-    .eq('userid', user.id);
+// app/cart/page.tsx snippet
+
+// Fetch cart items belonging to this user (include cartid)
+const { data: rawCartItems, error: cartError } = await supabase
+  .from("cart")
+  .select("cartid, productid, product, price, userid")
+  .eq("userid", user.id);
 
   if (cartError) {
-    console.log(cartError.message)
+    console.error("Supabase Error:", cartError.message);
     return (
-      <>
-        <p>Error loading cart items.</p>
-      </>
+      <div className="min-h-screen bg-[#0a0c10] text-slate-100 flex items-center justify-center p-6">
+        <div className="p-6 rounded-2xl bg-rose-950/40 border border-rose-500/30 text-rose-300 text-center max-w-md">
+          <p className="font-semibold text-lg">Error loading cart items</p>
+          <p className="text-sm opacity-80 mt-1">{cartError.message}</p>
+        </div>
+      </div>
     );
   }
 
-  return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item, index) => (
-            <li key={index} className="border-b py-2 flex justify-between">
-              <div>
-                <p className="font-semibold">{item.product}</p>
-                <p className="text-sm text-gray-500">Qty: 1</p>
-              </div>
-              <p>Value: ${item.price}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+  // Format cart items safety check
+  const cartItems: CartItem[] = (rawCartItems || []).map((item) => ({
+    productid: Number(item.productid),
+    product: String(item.product),
+    price: Number(item.price) || 0,
+    userid: String(item.userid),
+    cartid: Number(item.cartid)
+  }));
+
+  return <CartClient initialItems={cartItems} />;
 }

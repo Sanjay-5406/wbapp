@@ -1,5 +1,3 @@
-
-
 import { createClient } from "@/utils/supabase/server";
 import ProductsClient from "./getproducts";
 
@@ -10,12 +8,14 @@ export default async function ProductsPage() {
     .from("product")
     .select("*");
 
-  
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
-    <>
-      <ProductsClient products={products ?? []} />;
-    </>
-  )
-
-
+    <ProductsClient
+      products={products ?? []}
+      isLoggedIn={!!user}
+    />
+  );
 }
