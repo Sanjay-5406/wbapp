@@ -14,7 +14,7 @@ import {
   ShieldCheck,
   TrendingUp,
 } from "lucide-react";
-
+import {redirect} from 'next/navigation'
 // Feature Cards Data for Horizontal Scroll
 const showcaseCards = [
   {
@@ -76,6 +76,23 @@ export default function HomePage() {
     }
   };
 
+  //mine
+
+  function handleGetStarted(){
+    console.log("getting started")
+    redirect("/products")
+  }
+
+  function handleExploreDemo(){
+    console.log("exploring demo")
+    redirect("/about")
+  }
+
+  function handleFreeTrial(){
+    console.log("getting started")
+    redirect("/products")
+  }
+
   return (
     <div className="min-h-screen bg-[#0a0c10] text-slate-100 font-sans selection:bg-cyan-500 selection:text-black overflow-hidden">
       {/* Background Ambient Glows */}
@@ -125,11 +142,12 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-wrap justify-center gap-4 pt-4"
           >
-            <button className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-semibold text-slate-950 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyan-500/20">
+            <button className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-semibold text-slate-950 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyan-500/20" onClick={handleGetStarted}>
               <span>Get Started Free</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 font-semibold text-slate-200 active:scale-95 transition-all backdrop-blur-md">
+            <button className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 font-semibold text-slate-200 active:scale-95 transition-all backdrop-blur-md"
+            onClick={handleExploreDemo}>
               <span>Explore Live Demo</span>
             </button>
           </motion.div>
@@ -245,7 +263,8 @@ export default function HomePage() {
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               Join thousands of developers and teams delivering high-velocity software with our next-gen stack.
             </p>
-            <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-950 font-bold hover:bg-slate-200 transition-all active:scale-95 shadow-md">
+            <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-950 font-bold hover:bg-slate-200 transition-all active:scale-95 shadow-md"
+            onClick={handleFreeTrial}>
               <Layers className="w-4 h-4" />
               <span>Start Free Trial</span>
             </button>

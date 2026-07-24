@@ -42,7 +42,7 @@ export default function Navbar() {
     { label: 'Products', href: '/products'},
     { label: 'Cart', href: '/cart'},
     { label: 'Chat', href: '/chat' },
-    { label: 'About us', href: '/about' },
+    { label: 'Files', href: '/myfiles' },
   ];
 
   return (
