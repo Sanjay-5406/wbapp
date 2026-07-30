@@ -18,7 +18,7 @@ export const navStyles: Record<string, React.CSSProperties> = {
   siteName: {
     fontSize: '24px',
     fontWeight: 700,
-    color: '#ffffff',
+    color: '#896afa',
     margin: 0, 
   },
 
